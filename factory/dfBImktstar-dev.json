@@ -1,0 +1,9 @@
+{
+	"name": "dfBImktstar-dev",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3a259f93-b369-43f0-8e1e-c38dd3c18e93",
+		"tenantId": "e48d7a13-df4f-490c-adb3-501b51c48a50"
+	}
+}
