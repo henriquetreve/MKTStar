@@ -1,5 +1,5 @@
 {
-	"name": "dstblOriginal",
+	"name": "dstbloriginal",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "srvbimktstar2",
