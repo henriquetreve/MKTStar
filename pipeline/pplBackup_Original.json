@@ -37,13 +37,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "dstbloriginal",
+						"referenceName": "dstblOriginal",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "dstbloriginal",
+						"referenceName": "dstblOriginal",
 						"type": "DatasetReference"
 					}
 				]
