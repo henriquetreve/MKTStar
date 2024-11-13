@@ -21,7 +21,7 @@
 					"name": "SelectColumn"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -52,7 +52,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
-				"SelectColumn derive(Affiliate = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"SelectColumn aggregate(groupBy(Affiliate)) ~> aggregate1"
 			]
 		}
 	}
