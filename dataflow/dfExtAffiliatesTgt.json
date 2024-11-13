@@ -71,7 +71,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
 				"          Affiliate",
-				"     )) ~> AffiliateSilver"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> AffiliateSilver"
 			]
 		}
 	}
