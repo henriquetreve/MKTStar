@@ -21,7 +21,7 @@
 					"name": "SelectColumn"
 				},
 				{
-					"name": "aggregate1"
+					"name": "AgrAux"
 				}
 			],
 			"scriptLines": [
@@ -52,7 +52,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
-				"SelectColumn aggregate(groupBy(Affiliate)) ~> aggregate1"
+				"SelectColumn aggregate(groupBy(Affiliate)) ~> AgrAux"
 			]
 		}
 	}
