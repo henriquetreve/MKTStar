@@ -53,8 +53,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
 				"SelectColumn aggregate(groupBy(Affiliate),",
-				"     Affiliate = ERROR_FUNCTION(''),",
-				"          column1 = ERROR_FUNCTION('')) ~> agrAffiliate"
+				"     countAffiliate = ERROR_FUNCTION('')) ~> agrAffiliate"
 			]
 		}
 	}
