@@ -19,7 +19,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          {Cod;Nome Novo} as string",
+				"          Cod as string,",
+				"          {Nome Novo} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
