@@ -38,6 +38,7 @@
 				"     input(",
 				"          Affiliate as string",
 				"     ),",
+				"     partitionFileNames:['Courses.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
