@@ -1,0 +1,17 @@
+{
+	"name": "dfExtAfilliatesTgt",
+	"properties": {
+		"folder": {
+			"name": "1 - Extration"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				""
+			]
+		}
+	}
+}
