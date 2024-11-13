@@ -18,7 +18,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "SelectColumn"
 				}
 			],
 			"scriptLines": [
@@ -45,26 +45,10 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
 				"Sales select(mapColumn(",
-				"          Produto,",
-				"          Afiliado,",
-				"          {Nome do Produtor},",
-				"          {Documento do Produtor},",
-				"          {Meio de Pagamento},",
-				"          {Preço do Produto},",
-				"          {Preço da Oferta},",
-				"          {Tipo de Pagamento},",
-				"          {Tipo pagamento oferta},",
-				"          Moeda,",
-				"          {Número da Parcela},",
-				"          {Recorrência},",
-				"          {Data de Venda},",
-				"          {Data de Confirmação},",
-				"          Status,",
-				"          DDD,",
-				"          Cidade",
+				"          Afiliado",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> SelectColumn"
 			]
 		}
 	}
