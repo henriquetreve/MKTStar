@@ -16,7 +16,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Produto as string,",
@@ -39,7 +43,28 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Sales"
+				"     ignoreNoFilesFound: false) ~> Sales",
+				"Sales select(mapColumn(",
+				"          Produto,",
+				"          Afiliado,",
+				"          {Nome do Produtor},",
+				"          {Documento do Produtor},",
+				"          {Meio de Pagamento},",
+				"          {Preço do Produto},",
+				"          {Preço da Oferta},",
+				"          {Tipo de Pagamento},",
+				"          {Tipo pagamento oferta},",
+				"          Moeda,",
+				"          {Número da Parcela},",
+				"          {Recorrência},",
+				"          {Data de Venda},",
+				"          {Data de Confirmação},",
+				"          Status,",
+				"          DDD,",
+				"          Cidade",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
