@@ -1,5 +1,5 @@
 {
-	"name": "dfExtAfilliatesTgt",
+	"name": "dfExtAffiliatesTgt",
 	"properties": {
 		"folder": {
 			"name": "1 - Extration"
@@ -45,7 +45,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
 				"Sales select(mapColumn(",
-				"          Afiliado",
+				"          Affiliate = Afiliado",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn"
