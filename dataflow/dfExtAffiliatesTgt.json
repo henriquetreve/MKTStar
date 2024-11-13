@@ -64,6 +64,7 @@
 				"     countAffiliate = count(Affiliate)) ~> agrAffiliate",
 				"agrAffiliate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Affiliates.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
