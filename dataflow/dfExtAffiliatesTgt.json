@@ -68,7 +68,10 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> AffiliateSilver"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Affiliate",
+				"     )) ~> AffiliateSilver"
 			]
 		}
 	}
