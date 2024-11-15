@@ -31,7 +31,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> dlSilver",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> dlSilver",
 				"dlSilver sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -45,10 +46,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          {} = Affiliate",
-				"     )) ~> srcDestination"
+				"     errorHandlingOption: 'stopOnFirstError') ~> srcDestination"
 			]
 		}
 	}
