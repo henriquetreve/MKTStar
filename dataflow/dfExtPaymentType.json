@@ -19,6 +19,9 @@
 			"transformations": [
 				{
 					"name": "agrPaymentType"
+				},
+				{
+					"name": "SelectColumn"
 				}
 			],
 			"scriptLines": [
@@ -45,7 +48,13 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
 				"Sales aggregate(groupBy({Tipo de Pagamento}),",
-				"     Count = count({Tipo de Pagamento})) ~> agrPaymentType"
+				"     Count = count({Tipo de Pagamento})) ~> agrPaymentType",
+				"agrPaymentType select(mapColumn(",
+				"          {Tipo de Pagamento},",
+				"          Count",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectColumn"
 			]
 		}
 	}
