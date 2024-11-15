@@ -67,7 +67,7 @@
 				"     input(",
 				"          Affiliate as string",
 				"     ),",
-				"     partitionFileNames:['status.csv'],",
+				"     partitionFileNames:['Status.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
