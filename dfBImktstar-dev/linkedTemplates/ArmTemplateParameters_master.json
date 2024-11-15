@@ -8,31 +8,19 @@
 		"dlMktStar_accountKey": {
 			"value": ""
 		},
-		"srvBIMKTstar_password": {
-			"value": ""
-		},
-		"srvbimktstar2_password": {
+		"srvdbMktStar_password": {
 			"value": ""
 		},
 		"dlMktStar_properties_typeProperties_url": {
 			"value": "https://samktstar.dfs.core.windows.net/"
 		},
-		"srvBIMKTstar_properties_typeProperties_server": {
+		"srvdbMktStar_properties_typeProperties_server": {
 			"value": "srvbimktstarht.database.windows.net"
 		},
-		"srvBIMKTstar_properties_typeProperties_database": {
+		"srvdbMktStar_properties_typeProperties_database": {
 			"value": "dbBImktstars"
 		},
-		"srvBIMKTstar_properties_typeProperties_userName": {
-			"value": "adminsql"
-		},
-		"srvbimktstar2_properties_typeProperties_server": {
-			"value": "srvbimktstarht.database.windows.net"
-		},
-		"srvbimktstar2_properties_typeProperties_database": {
-			"value": "dbBImktstars"
-		},
-		"srvbimktstar2_properties_typeProperties_userName": {
+		"srvdbMktStar_properties_typeProperties_userName": {
 			"value": "adminsql"
 		},
 		"containerUri": {

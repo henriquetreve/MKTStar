@@ -107,6 +107,53 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pplExtMacroRegions')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dfMacroRegions",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dfExtMacroRegions",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"MacroRegions": {},
+									"RegionsSilver": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "1 - Extration"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pplExtPaymentType')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -154,13 +201,13 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pplExtStatus')]",
+			"name": "[concat(parameters('factoryName'), '/pplExtProducer')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "dfExtStatus",
+						"name": "dfExtProducer",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -173,59 +220,12 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "dfExtStatus",
+								"referenceName": "dfExtProducer",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
 									"Sales": {},
-									"StatusSilver": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "1 - Extration"
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pplExtMacroRegions')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "dfMacroRegions",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "dfExtMacroRegions",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"MacroRegions": {},
-									"RegionsSilver": {}
+									"ProducerSilver": {}
 								}
 							},
 							"staging": {},
@@ -295,13 +295,13 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pplExtProducer')]",
+			"name": "[concat(parameters('factoryName'), '/pplExtStatus')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "dfExtProducer",
+						"name": "dfExtStatus",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -314,12 +314,12 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "dfExtProducer",
+								"referenceName": "dfExtStatus",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
 									"Sales": {},
-									"ProducerSilver": {}
+									"StatusSilver": {}
 								}
 							},
 							"staging": {},
