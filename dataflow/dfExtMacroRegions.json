@@ -19,6 +19,9 @@
 			"transformations": [
 				{
 					"name": "dddcitystate"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -28,7 +31,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MacroRegions",
-				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate"
+				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
+				"dddcitystate derive() ~> derivedColumn1"
 			]
 		}
 	}
