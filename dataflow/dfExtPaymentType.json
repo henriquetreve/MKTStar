@@ -1,0 +1,22 @@
+{
+	"name": "dfExtPaymentType",
+	"properties": {
+		"folder": {
+			"name": "1 - Extration"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "Sales"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> Sales"
+			]
+		}
+	}
+}
