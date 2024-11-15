@@ -44,7 +44,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
-				"Sales aggregate() ~> agrPaymentType"
+				"Sales aggregate(groupBy({Tipo de Pagamento}),",
+				"     {Tipo de Pagamento} = count()) ~> agrPaymentType"
 			]
 		}
 	}
