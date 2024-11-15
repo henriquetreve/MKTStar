@@ -21,7 +21,7 @@
 						"referenceName": "dsExtStatusDestination",
 						"type": "DatasetReference"
 					},
-					"name": "StatusSilver"
+					"name": "ProducerSilver"
 				}
 			],
 			"transformations": [
@@ -55,10 +55,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
-				"Sales aggregate(groupBy(Status),",
+				"Sales aggregate(groupBy({Nome do Produtor}),",
 				"     Count = count()) ~> aggProducer",
 				"aggProducer select(mapColumn(",
-				"          Status",
+				"          {Producer Name} = {Nome do Produtor}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
@@ -73,7 +73,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> StatusSilver"
+				"     partitionBy('hash', 1)) ~> ProducerSilver"
 			]
 		}
 	}
