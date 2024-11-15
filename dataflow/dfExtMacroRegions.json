@@ -28,7 +28,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MacroRegions",
-				"MacroRegions derive(dddcitystate = ERROR_FUNCTION('')) ~> dddcitystate"
+				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate"
 			]
 		}
 	}
