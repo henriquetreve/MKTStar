@@ -36,7 +36,8 @@
 				"     ignoreNoFilesFound: false) ~> MacroRegions",
 				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
 				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate",
-				"Splitdddcitystate derive() ~> derivedColumn1"
+				"Splitdddcitystate derive(ddd = Splitdddcitystate[1],",
+				"          column1 = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
