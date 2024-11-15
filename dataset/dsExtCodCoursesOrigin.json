@@ -1,5 +1,5 @@
 {
-	"name": "dsExtCodCoursesExit",
+	"name": "dsExtCodCoursesOrigin",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dlMktStar",

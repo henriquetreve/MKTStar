@@ -1,5 +1,5 @@
 {
-	"name": "dsExtSalesHotmartExit",
+	"name": "dsExtSalesHotmartOrigin",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dlMktStar",
