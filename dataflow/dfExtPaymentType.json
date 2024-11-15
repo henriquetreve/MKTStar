@@ -50,8 +50,7 @@
 				"Sales aggregate(groupBy({Tipo de Pagamento}),",
 				"     Count = count({Tipo de Pagamento})) ~> agrPaymentType",
 				"agrPaymentType select(mapColumn(",
-				"          {Tipo de Pagamento},",
-				"          Count",
+				"          {Tipo de Pagamento}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn"
