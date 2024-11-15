@@ -15,7 +15,11 @@
 					"name": "MacroRegions"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "Regions"
+				}
+			],
 			"transformations": [
 				{
 					"name": "dddcitystate"
@@ -27,7 +31,7 @@
 					"name": "SplitRegions"
 				},
 				{
-					"name": "select1"
+					"name": "FinalSelection"
 				}
 			],
 			"scriptLines": [
@@ -43,15 +47,16 @@
 				"          city = Splitdddcitystate[2],",
 				"          state = Splitdddcitystate[3]) ~> SplitRegions",
 				"SplitRegions select(mapColumn(",
-				"          Column_1,",
-				"          dddcitystate,",
-				"          Splitdddcitystate,",
 				"          ddd,",
 				"          city,",
 				"          state",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> FinalSelection",
+				"FinalSelection sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Regions"
 			]
 		}
 	}
