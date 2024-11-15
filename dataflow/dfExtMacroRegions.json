@@ -24,7 +24,10 @@
 					"name": "Splitdddcitystate"
 				},
 				{
-					"name": "Sepa"
+					"name": "SplitRegions"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -38,7 +41,17 @@
 				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate",
 				"Splitdddcitystate derive(ddd = Splitdddcitystate[1],",
 				"          city = Splitdddcitystate[2],",
-				"          state = Splitdddcitystate[3]) ~> Sepa"
+				"          state = Splitdddcitystate[3]) ~> SplitRegions",
+				"SplitRegions select(mapColumn(",
+				"          Column_1,",
+				"          dddcitystate,",
+				"          Splitdddcitystate,",
+				"          ddd,",
+				"          city,",
+				"          state",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
