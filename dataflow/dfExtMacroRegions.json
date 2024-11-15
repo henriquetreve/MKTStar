@@ -48,7 +48,7 @@
 				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
 				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate",
 				"Splitdddcitystate derive(ddd = trim(Splitdddcitystate[1]),",
-				"          city = length(Splitdddcitystate[2]),",
+				"          city = left(trim(Splitdddcitystate[2]), length(trim(Splitdddcitystate[2]))-1),",
 				"          state = trim(Splitdddcitystate[3])) ~> SplitRegions",
 				"SplitRegions select(mapColumn(",
 				"          ddd,",
