@@ -1,5 +1,5 @@
 {
-	"name": "dsExtPaymentType",
+	"name": "dsExtPaymentTypeDestination",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dlMktStar",
