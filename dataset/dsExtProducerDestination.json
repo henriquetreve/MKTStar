@@ -1,5 +1,5 @@
 {
-	"name": "dsExtProducer",
+	"name": "dsExtProducerDestination",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dlMktStar",
