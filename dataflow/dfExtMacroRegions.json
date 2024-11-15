@@ -1,5 +1,5 @@
 {
-	"name": "dfExtRegions",
+	"name": "dfExtMacroRegions",
 	"properties": {
 		"folder": {
 			"name": "1 - Extration"
@@ -8,14 +8,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"name": "macroregions"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"     validateSchema: false) ~> macroregions"
 			]
 		}
 	}
