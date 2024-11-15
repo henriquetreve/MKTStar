@@ -16,7 +16,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Produto as string,",
@@ -39,7 +43,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Sales"
+				"     ignoreNoFilesFound: false) ~> Sales",
+				"Sales aggregate() ~> aggregate1"
 			]
 		}
 	}
