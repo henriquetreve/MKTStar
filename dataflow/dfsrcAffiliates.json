@@ -15,12 +15,34 @@
 					"name": "dlSilver"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "tblsrcAffiliates",
+						"type": "DatasetReference"
+					},
+					"name": "srcDestination"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> dlSilver"
+				"     ignoreNoFilesFound: false) ~> dlSilver",
+				"dlSilver sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          Nome as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> srcDestination"
 			]
 		}
 	}
