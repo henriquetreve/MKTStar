@@ -16,14 +16,19 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "dddcitystate"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Column_1 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> MacroRegions"
+				"     ignoreNoFilesFound: false) ~> MacroRegions",
+				"MacroRegions derive() ~> dddcitystate"
 			]
 		}
 	}
