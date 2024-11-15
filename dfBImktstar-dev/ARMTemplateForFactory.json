@@ -891,7 +891,7 @@
 						"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
 						"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate",
 						"Splitdddcitystate derive(ddd = trim(Splitdddcitystate[1]),",
-						"          city = trim(Splitdddcitystate[2]),",
+						"          city = left(trim(Splitdddcitystate[2]), length(trim(Splitdddcitystate[2]))-1),",
 						"          state = trim(Splitdddcitystate[3])) ~> SplitRegions",
 						"SplitRegions select(mapColumn(",
 						"          ddd,",
@@ -1090,6 +1090,159 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/dsExtSalesHotmartOrigin')]",
 				"[concat(variables('factoryId'), '/datasets/dsExtStatusDestination')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dsExtSalesHotmartDestination')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "dlMktStar",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "silver"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Affiliate",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/dlMktStar')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dfExtSalesHotmart')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "1 - Extration"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "dsExtSalesHotmartOrigin",
+								"type": "DatasetReference"
+							},
+							"name": "SalesHotmart"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "dsExtSalesHotmartDestination",
+								"type": "DatasetReference"
+							},
+							"name": "SalesHotmartDestination"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          Produto as string,",
+						"          Afiliado as string,",
+						"          {Nome do Produtor} as string,",
+						"          {Documento do Produtor} as string,",
+						"          {Meio de Pagamento} as string,",
+						"          {Preço do Produto} as string,",
+						"          {Preço da Oferta} as string,",
+						"          {Tipo de Pagamento} as string,",
+						"          {Tipo pagamento oferta} as string,",
+						"          Moeda as string,",
+						"          {Número da Parcela} as string,",
+						"          {Recorrência} as string,",
+						"          {Data de Venda} as string,",
+						"          {Data de Confirmação} as string,",
+						"          Status as string,",
+						"          DDD as string,",
+						"          Cidade as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> SalesHotmart",
+						"SalesHotmart sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Affiliate as string",
+						"     ),",
+						"     partitionFileNames:['Sales.csv'],",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 1)) ~> SalesHotmartDestination"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/dsExtSalesHotmartOrigin')]",
+				"[concat(variables('factoryId'), '/datasets/dsExtSalesHotmartDestination')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pplExtSales')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dfExtSales",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dfExtSalesHotmart",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"SalesHotmart": {},
+									"SalesHotmartDestination": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "1 - Extration"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dfExtSalesHotmart')]"
 			]
 		}
 	]
