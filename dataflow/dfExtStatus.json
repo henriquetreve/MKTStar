@@ -1,16 +1,45 @@
 {
-	"name": "dataflow1",
+	"name": "dfExtStatus",
 	"properties": {
 		"folder": {
 			"name": "1 - Extration"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dsExtSalesHotmartOrigin",
+						"type": "DatasetReference"
+					},
+					"name": "Sales"
+				}
+			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          Produto as string,",
+				"          Afiliado as string,",
+				"          {Nome do Produtor} as string,",
+				"          {Documento do Produtor} as string,",
+				"          {Meio de Pagamento} as string,",
+				"          {Preço do Produto} as string,",
+				"          {Preço da Oferta} as string,",
+				"          {Tipo de Pagamento} as string,",
+				"          {Tipo pagamento oferta} as string,",
+				"          Moeda as string,",
+				"          {Número da Parcela} as string,",
+				"          {Recorrência} as string,",
+				"          {Data de Venda} as string,",
+				"          {Data de Confirmação} as string,",
+				"          Status as string,",
+				"          DDD as string,",
+				"          Cidade as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Sales"
 			]
 		}
 	}
