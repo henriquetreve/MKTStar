@@ -19,6 +19,9 @@
 			"transformations": [
 				{
 					"name": "aggStatus"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +47,14 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
-				"Sales aggregate() ~> aggStatus"
+				"Sales aggregate(groupBy(Status),",
+				"     Count = count()) ~> aggStatus",
+				"aggStatus select(mapColumn(",
+				"          Status,",
+				"          Count",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
