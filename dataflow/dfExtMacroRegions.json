@@ -22,6 +22,9 @@
 				},
 				{
 					"name": "Splitdddcitystate"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -32,7 +35,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MacroRegions",
 				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
-				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate"
+				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '–')) ~> Splitdddcitystate",
+				"Splitdddcitystate derive() ~> derivedColumn1"
 			]
 		}
 	}
