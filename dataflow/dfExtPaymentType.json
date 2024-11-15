@@ -17,6 +17,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "dsExtPaymentTypeDestination",
+						"type": "DatasetReference"
+					},
 					"name": "PaymentTypeSilver"
 				}
 			],
@@ -60,6 +64,12 @@
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
 				"SelectColumn sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Affiliate as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> PaymentTypeSilver"
 			]
