@@ -17,7 +17,7 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"name": "PaymentTypeSilver"
 				}
 			],
 			"transformations": [
@@ -61,7 +61,7 @@
 				"SelectColumn sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> PaymentTypeSilver"
 			]
 		}
 	}
