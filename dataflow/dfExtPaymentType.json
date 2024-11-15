@@ -15,7 +15,11 @@
 					"name": "Sales"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "agrPaymentType"
@@ -53,7 +57,11 @@
 				"          {Tipo de Pagamento}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> SelectColumn"
+				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
+				"SelectColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
