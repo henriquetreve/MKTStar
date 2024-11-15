@@ -64,7 +64,7 @@
 				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
 				"SelectColumn sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['Status.csv'],",
+				"     partitionFileNames:['Producer.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
