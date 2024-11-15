@@ -1,5 +1,5 @@
 {
-	"name": "tblsrcCourses",
+	"name": "tblsrcProducer",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "srvdbMktStar",
@@ -17,17 +17,13 @@
 				"precision": 10
 			},
 			{
-				"name": "BK",
-				"type": "varchar"
-			},
-			{
 				"name": "Nome",
 				"type": "varchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "src",
-			"table": "Cursos"
+			"table": "Produtor"
 		}
 	}
 }
