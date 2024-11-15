@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dfExtAffiliatesTgt",
+						"referenceName": "dfExtAffiliates",
 						"type": "DataFlowReference"
 					},
 					"compute": {
