@@ -8,14 +8,22 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "macroregions"
+					"dataset": {
+						"referenceName": "dsExtMacroRegionsOrigin",
+						"type": "DatasetReference"
+					},
+					"name": "MacroRegions"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> macroregions"
+				"source(output(",
+				"          Column_1 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> MacroRegions"
 			]
 		}
 	}
