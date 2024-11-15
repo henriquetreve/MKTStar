@@ -15,7 +15,15 @@
 					"name": "SalesHotmart"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dsExtSalesHotmartDestination",
+						"type": "DatasetReference"
+					},
+					"name": "SalesHotmartDestination"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
@@ -39,7 +47,19 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SalesHotmart"
+				"     ignoreNoFilesFound: false) ~> SalesHotmart",
+				"SalesHotmart sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Affiliate as string",
+				"     ),",
+				"     partitionFileNames:[''],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> SalesHotmartDestination"
 			]
 		}
 	}
