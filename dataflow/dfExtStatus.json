@@ -15,13 +15,21 @@
 					"name": "Sales"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dsExtStatusDestination",
+						"type": "DatasetReference"
+					},
+					"name": "StatusSilver"
+				}
+			],
 			"transformations": [
 				{
 					"name": "aggStatus"
 				},
 				{
-					"name": "select1"
+					"name": "SelectColumn"
 				}
 			],
 			"scriptLines": [
@@ -50,11 +58,22 @@
 				"Sales aggregate(groupBy(Status),",
 				"     Count = count()) ~> aggStatus",
 				"aggStatus select(mapColumn(",
-				"          Status,",
-				"          Count",
+				"          Status",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> SelectColumn",
+				"SelectColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Affiliate as string",
+				"     ),",
+				"     partitionFileNames:['status.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StatusSilver"
 			]
 		}
 	}
