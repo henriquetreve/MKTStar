@@ -32,7 +32,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MacroRegions",
 				"MacroRegions derive(dddcitystate = substring(Column_1, 4, 400)) ~> dddcitystate",
-				"dddcitystate derive(Splitdddcitystate = ERROR_FUNCTION('')) ~> Splitdddcitystate"
+				"dddcitystate derive(Splitdddcitystate = split(dddcitystate, '-')) ~> Splitdddcitystate"
 			]
 		}
 	}
