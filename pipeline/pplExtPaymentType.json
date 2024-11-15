@@ -1,0 +1,9 @@
+{
+	"name": "pplExtPaymentType",
+	"properties": {
+		"folder": {
+			"name": "1 - Extration"
+		},
+		"annotations": []
+	}
+}
