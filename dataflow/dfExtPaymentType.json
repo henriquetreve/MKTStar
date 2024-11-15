@@ -18,7 +18,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "aggregate1"
+					"name": "agrPaymentType"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +44,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Sales",
-				"Sales aggregate() ~> aggregate1"
+				"Sales aggregate() ~> agrPaymentType"
 			]
 		}
 	}
