@@ -5,6 +5,9 @@
 			"referenceName": "dlMktStar",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "1 - Extraction"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
