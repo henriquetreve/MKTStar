@@ -421,7 +421,7 @@
 								"referenceName": "dsExtAffiliatesDestination",
 								"type": "DatasetReference"
 							},
-							"name": "dlSilver"
+							"name": "DLSilver"
 						}
 					],
 					"sinks": [
@@ -441,8 +441,8 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
-						"     partitionBy('hash', 1)) ~> dlSilver",
-						"dlSilver sink(allowSchemaDrift: true,",
+						"     partitionBy('hash', 1)) ~> DLSilver",
+						"DLSilver sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
 						"          Id as integer,",
@@ -459,6 +459,68 @@
 						"     errorHandlingOption: 'stopOnFirstError',",
 						"     mapColumn(",
 						"          Nome = Affiliate",
+						"     )) ~> srcDestination"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dfsrcCourses')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "2 - Stage"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "dsExtCoursesDestination",
+								"type": "DatasetReference"
+							},
+							"name": "DLSilver"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "tblsrcCourses",
+								"type": "DatasetReference"
+							},
+							"name": "srcDestination"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          Cod as string,",
+						"          {Nome Novo} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> DLSilver",
+						"DLSilver sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Id as integer,",
+						"          BK as string,",
+						"          Nome as string",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          BK = Cod,",
+						"          Nome = {Nome Novo}",
 						"     )) ~> srcDestination"
 					]
 				}
@@ -828,7 +890,7 @@
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"dlSilver": {},
+									"DLSilver": {},
 									"srcDestination": {}
 								}
 							},
@@ -851,6 +913,55 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dfsrcAffiliates')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pplsrcCourses')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dfsrcCourses",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dfsrcCourses",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"DLSilver": {},
+									"srcDestination": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "2 - Stage"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dfsrcCourses')]"
 			]
 		}
 	]
