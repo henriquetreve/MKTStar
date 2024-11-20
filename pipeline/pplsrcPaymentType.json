@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dfsrcAffiliates",
+						"referenceName": "dfsrcPaymentType",
 						"type": "DataFlowReference"
 					},
 					"compute": {
