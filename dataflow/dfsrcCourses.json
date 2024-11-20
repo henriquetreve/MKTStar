@@ -19,7 +19,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Affiliate as string",
+				"          Cod as string,",
+				"          {Nome Novo} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
