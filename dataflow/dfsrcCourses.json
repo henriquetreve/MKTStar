@@ -15,7 +15,11 @@
 					"name": "DLSilver"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "src"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
@@ -24,7 +28,11 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DLSilver"
+				"     ignoreNoFilesFound: false) ~> DLSilver",
+				"DLSilver sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> src"
 			]
 		}
 	}
