@@ -49,7 +49,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Nome = Affiliate",
+				"          Nome = {Producer Name}",
 				"     )) ~> srcDestination"
 			]
 		}
