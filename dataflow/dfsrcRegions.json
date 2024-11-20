@@ -27,7 +27,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          ddd as short,",
+				"          ddd as integer,",
 				"          city as string,",
 				"          state as string",
 				"     ),",
