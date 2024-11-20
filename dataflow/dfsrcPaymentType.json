@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "dsExtPaymentTypeDestination",
+						"referenceName": "tblsrcPaymentType",
 						"type": "DatasetReference"
 					},
 					"name": "srcDestination"
@@ -36,15 +36,18 @@
 				"DLSilver sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          Affiliate as string",
+				"          Id as integer,",
+				"          Nome as string",
 				"     ),",
-				"     truncate: true,",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     format: 'table') ~> srcDestination"
+				"     errorHandlingOption: 'stopOnFirstError') ~> srcDestination"
 			]
 		}
 	}
