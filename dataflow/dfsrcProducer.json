@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "tblsrcAffiliates",
+						"referenceName": "tblsrcProducer",
 						"type": "DatasetReference"
 					},
 					"name": "srcDestination"
@@ -26,7 +26,10 @@
 			],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          {Producer Name} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     partitionBy('hash', 1)) ~> DLSilver",
