@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "dsExtAffiliatesDestination",
+						"referenceName": "dsExtMacroRegionsDestination",
 						"type": "DatasetReference"
 					},
 					"name": "DLSilver"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "tblsrcAffiliates",
+						"referenceName": "tblsrcRegions",
 						"type": "DatasetReference"
 					},
 					"name": "srcDestination"
@@ -27,7 +27,9 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Affiliate as string",
+				"          ddd as short,",
+				"          city as string,",
+				"          state as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -37,7 +39,9 @@
 				"     validateSchema: false,",
 				"     input(",
 				"          Id as integer,",
-				"          Nome as string",
+				"          DDD as integer,",
+				"          Cidade as string,",
+				"          Estado as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -49,7 +53,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Nome = Affiliate",
+				"          DDD = ddd,",
+				"          Cidade = city,",
+				"          Estado = state",
 				"     )) ~> srcDestination"
 			]
 		}
