@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "tblsrcAffiliates",
+						"referenceName": "tblsrcStatus",
 						"type": "DatasetReference"
 					},
 					"name": "srcDestination"
@@ -47,10 +47,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          Nome = Affiliate",
-				"     )) ~> srcDestination"
+				"     errorHandlingOption: 'stopOnFirstError') ~> srcDestination"
 			]
 		}
 	}
