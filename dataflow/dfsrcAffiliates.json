@@ -12,7 +12,7 @@
 						"referenceName": "dsExtAffiliatesDestination",
 						"type": "DatasetReference"
 					},
-					"name": "dlSilver"
+					"name": "DLSilver"
 				}
 			],
 			"sinks": [
@@ -32,8 +32,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     partitionBy('hash', 1)) ~> dlSilver",
-				"dlSilver sink(allowSchemaDrift: true,",
+				"     partitionBy('hash', 1)) ~> DLSilver",
+				"DLSilver sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Id as integer,",

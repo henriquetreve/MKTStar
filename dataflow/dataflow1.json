@@ -12,7 +12,7 @@
 						"referenceName": "dsExtCoursesDestination",
 						"type": "DatasetReference"
 					},
-					"name": "dl"
+					"name": "DLSilver"
 				}
 			],
 			"sinks": [],
@@ -23,7 +23,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> dl"
+				"     ignoreNoFilesFound: false) ~> DLSilver"
 			]
 		}
 	}
