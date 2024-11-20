@@ -44,9 +44,6 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     mapColumn(",
-				"          Affiliate = {Tipo de Pagamento}",
-				"     ),",
 				"     format: 'table') ~> srcDestination"
 			]
 		}
