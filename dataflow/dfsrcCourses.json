@@ -17,7 +17,11 @@
 			],
 			"sinks": [
 				{
-					"name": "src"
+					"dataset": {
+						"referenceName": "tblsrcCourses",
+						"type": "DatasetReference"
+					},
+					"name": "srcDestination"
 				}
 			],
 			"transformations": [],
@@ -31,8 +35,24 @@
 				"     ignoreNoFilesFound: false) ~> DLSilver",
 				"DLSilver sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          BK as string,",
+				"          Nome as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> src"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          BK = Cod,",
+				"          Nome = {Nome Novo}",
+				"     )) ~> srcDestination"
 			]
 		}
 	}
