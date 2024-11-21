@@ -69,8 +69,8 @@
 				"          Id_STG = Id,",
 				"          BK_STG = BK,",
 				"          Nome_STG = Nome,",
-				"          DataInicio,",
-				"          DataFim",
+				"          DataInicio_STG = DataInicio,",
+				"          DataFim_STG = DataFim",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewStage"
