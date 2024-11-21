@@ -32,6 +32,9 @@
 				},
 				{
 					"name": "SortStage"
+				},
+				{
+					"name": "NewStage"
 				}
 			],
 			"scriptLines": [
@@ -61,7 +64,16 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewSource",
-				"Stage sort(asc(BK, true)) ~> SortStage"
+				"Stage sort(asc(BK, true)) ~> SortStage",
+				"SortStage select(mapColumn(",
+				"          Id_STG = Id,",
+				"          BK_STG = BK,",
+				"          Nome_STG = Nome,",
+				"          DataInicio,",
+				"          DataFim",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> NewStage"
 			]
 		}
 	}
