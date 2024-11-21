@@ -26,6 +26,9 @@
 			"transformations": [
 				{
 					"name": "SortSource"
+				},
+				{
+					"name": "NewSource"
 				}
 			],
 			"scriptLines": [
@@ -48,7 +51,13 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Stage",
-				"Source sort(asc(ERROR_FUNCTION(''), true)) ~> SortSource"
+				"Source sort(asc(Id, true)) ~> SortSource",
+				"SortSource select(mapColumn(",
+				"          Id_SRC = Id,",
+				"          Nome_SRC = Nome",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> NewSource"
 			]
 		}
 	}
