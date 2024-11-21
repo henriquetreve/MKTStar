@@ -29,6 +29,9 @@
 				},
 				{
 					"name": "NewSource"
+				},
+				{
+					"name": "SortStage"
 				}
 			],
 			"scriptLines": [
@@ -57,7 +60,8 @@
 				"          Nome_SRC = Nome",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> NewSource"
+				"     skipDuplicateMapOutputs: true) ~> NewSource",
+				"Stage sort(asc(ERROR_FUNCTION(''), true)) ~> SortStage"
 			]
 		}
 	}
