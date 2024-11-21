@@ -23,7 +23,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "SortSource"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Id as integer,",
@@ -43,7 +47,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> Stage"
+				"     format: 'table') ~> Stage",
+				"Source sort(asc(ERROR_FUNCTION(''), true)) ~> SortSource"
 			]
 		}
 	}
