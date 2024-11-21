@@ -61,7 +61,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewSource",
-				"Stage sort(asc(ERROR_FUNCTION(''), true)) ~> SortStage"
+				"Stage sort(asc(BK, true)) ~> SortStage"
 			]
 		}
 	}
