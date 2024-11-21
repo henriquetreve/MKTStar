@@ -8,14 +8,24 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "tblsrcAffiliates",
+						"type": "DatasetReference"
+					},
 					"name": "Source"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> Source"
+				"source(output(",
+				"          Id as integer,",
+				"          Nome as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Source"
 			]
 		}
 	}
