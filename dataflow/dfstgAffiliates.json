@@ -37,7 +37,7 @@
 					"name": "NewStage"
 				},
 				{
-					"name": "Active"
+					"name": "Actives"
 				}
 			],
 			"scriptLines": [
@@ -67,7 +67,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewSource",
-				"Active sort(asc(BK, true)) ~> SortStage",
+				"Actives sort(asc(BK, true)) ~> SortStage",
 				"SortStage select(mapColumn(",
 				"          Id_STG = Id,",
 				"          BK_STG = BK,",
@@ -77,7 +77,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewStage",
-				"Stage filter(ERROR_FUNCTION('')) ~> Active"
+				"Stage filter(isNull(DataFim)) ~> Actives"
 			]
 		}
 	}
