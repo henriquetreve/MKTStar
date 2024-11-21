@@ -13,6 +13,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Source"
+				},
+				{
+					"dataset": {
+						"referenceName": "tblstgAffiliates",
+						"type": "DatasetReference"
+					},
+					"name": "Stage"
 				}
 			],
 			"sinks": [],
@@ -25,7 +32,18 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> Source"
+				"     format: 'table') ~> Source",
+				"source(output(",
+				"          Id as integer,",
+				"          BK as integer,",
+				"          Nome as string,",
+				"          DataInicio as date,",
+				"          DataFim as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Stage"
 			]
 		}
 	}
