@@ -89,7 +89,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> JoinLeft",
-				"JoinLeft derive(DateStartEnd = ERROR_FUNCTION('')) ~> DateStart"
+				"JoinLeft derive(DateStartEnd = currentTimestamp()) ~> DateStart"
 			]
 		}
 	}
