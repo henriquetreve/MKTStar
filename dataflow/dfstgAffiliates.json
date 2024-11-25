@@ -93,8 +93,8 @@
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> JoinLeft",
 				"JoinLeft derive(DateStartEnd = currentTimestamp()) ~> DateStart",
-				"DateStart split(ERROR_FUNCTION(''),",
-				"     disjoint: false) ~> split1@(NewRecords, )"
+				"DateStart split(isNull(BK_STG),",
+				"     disjoint: false) ~> split1@(NewRecords)"
 			]
 		}
 	}
