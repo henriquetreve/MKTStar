@@ -40,7 +40,7 @@
 					"name": "Actives"
 				},
 				{
-					"name": "join1"
+					"name": "JoinLeft"
 				}
 			],
 			"scriptLines": [
@@ -81,11 +81,11 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewStage",
 				"Stage filter(isNull(DataFim)) ~> Actives",
-				"NewSource join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
-				"     joinType:'inner',",
+				"NewSource join(Id_SRC == ERROR_FUNCTION(''),",
+				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> JoinLeft"
 			]
 		}
 	}
