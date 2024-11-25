@@ -81,7 +81,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NewStage",
 				"Stage filter(isNull(DataFim)) ~> Actives",
-				"NewSource join(Id_SRC == ERROR_FUNCTION(''),",
+				"NewSource, NewStage join(Id_SRC == BK_STG,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
