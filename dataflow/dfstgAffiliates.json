@@ -22,7 +22,15 @@
 					"name": "Stage"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "tblstgAffiliates",
+						"type": "DatasetReference"
+					},
+					"name": "StageNew"
+				}
+			],
 			"transformations": [
 				{
 					"name": "SortSource"
@@ -94,7 +102,24 @@
 				"     broadcast: 'auto')~> JoinLeft",
 				"JoinLeft derive(DateStartEnd = currentTimestamp()) ~> DateStart",
 				"DateStart split(isNull(BK_STG),",
-				"     disjoint: false) ~> split1@(NewRecords)"
+				"     disjoint: false) ~> split1@(NewRecords)",
+				"split1@NewRecords sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          BK as integer,",
+				"          Nome as string,",
+				"          DataInicio as date,",
+				"          DataFim as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> StageNew"
 			]
 		}
 	}
