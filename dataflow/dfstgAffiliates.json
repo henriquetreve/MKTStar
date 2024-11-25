@@ -43,7 +43,7 @@
 					"name": "JoinLeft"
 				},
 				{
-					"name": "StartDate"
+					"name": "DateStart"
 				}
 			],
 			"scriptLines": [
@@ -89,7 +89,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> JoinLeft",
-				"JoinLeft derive() ~> StartDate"
+				"JoinLeft derive(DateStartEnd = ERROR_FUNCTION('')) ~> DateStart"
 			]
 		}
 	}
