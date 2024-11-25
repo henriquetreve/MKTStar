@@ -119,7 +119,12 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> StageNew"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          BK = Id_SRC,",
+				"          Nome = Nome_SRC,",
+				"          DataInicio = DateStartEnd",
+				"     )) ~> StageNew"
 			]
 		}
 	}
