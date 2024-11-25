@@ -41,6 +41,9 @@
 				},
 				{
 					"name": "JoinLeft"
+				},
+				{
+					"name": "StartDate"
 				}
 			],
 			"scriptLines": [
@@ -85,7 +88,8 @@
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> JoinLeft"
+				"     broadcast: 'auto')~> JoinLeft",
+				"JoinLeft derive() ~> StartDate"
 			]
 		}
 	}
