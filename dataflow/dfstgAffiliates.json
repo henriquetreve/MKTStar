@@ -51,7 +51,7 @@
 					"name": "JoinLeft"
 				},
 				{
-					"name": "DateStart"
+					"name": "StartDate"
 				},
 				{
 					"name": "split1"
@@ -100,8 +100,8 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> JoinLeft",
-				"JoinLeft derive(DateStartEnd = currentTimestamp()) ~> DateStart",
-				"DateStart split(isNull(BK_STG),",
+				"JoinLeft derive(StartDate = currentTimestamp()) ~> StartDate",
+				"StartDate split(isNull(BK_STG),",
 				"     disjoint: false) ~> split1@(NewRecords)",
 				"split1@NewRecords sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -123,7 +123,7 @@
 				"     mapColumn(",
 				"          BK = Id_SRC,",
 				"          Nome = Nome_SRC,",
-				"          DataInicio = DateStartEnd",
+				"          DataInicio = StartDate",
 				"     )) ~> StageNew"
 			]
 		}
